@@ -47,8 +47,12 @@ async def health_check():
     }
 
 
-# Import and include routers from microservices
-# These will be implemented in phases
+# Import and include routers
+from routers.auth import router as auth_router
+
+app.include_router(auth_router, prefix="/api/v1", tags=["Authentication"])
+
+# Import microservice routers (to be implemented in phases)
 # from design_generation_service.routes import router as design_router
 # from project_management_service.routes import router as project_router
 # from commerce_service.routes import router as commerce_router
